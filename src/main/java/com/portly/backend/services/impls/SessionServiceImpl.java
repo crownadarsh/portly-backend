@@ -5,7 +5,6 @@ import com.portly.backend.entities.Session;
 import com.portly.backend.entities.User;
 import com.portly.backend.repositories.SessionRepository;
 import com.portly.backend.services.SessionService;
-import com.portly.backend.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.web.authentication.session.SessionAuthenticationException;
 import org.springframework.stereotype.Service;
@@ -31,7 +30,7 @@ public class SessionServiceImpl implements SessionService {
         if(userSessions.size() == SESSION_LIMIT){
             userSessions.sort(Comparator.comparing(Session::getLastUsedAt));
 
-            Session leastRecentlyUsedSession = userSessions.getFirst();
+            Session leastRecentlyUsedSession = userSessions.get(0);
             sessionRepository.delete(leastRecentlyUsedSession);
         }
 
