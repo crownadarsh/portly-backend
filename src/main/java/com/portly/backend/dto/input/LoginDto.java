@@ -1,4 +1,4 @@
-package com.portly.backend.dto;
+package com.portly.backend.dto.input;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

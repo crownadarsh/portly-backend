@@ -2,6 +2,8 @@ package com.portly.backend.controllers;
 
 import com.portly.backend.dto.*;
 import com.portly.backend.dto.input.ForgetPasswordDto;
+import com.portly.backend.dto.input.LoginDto;
+import com.portly.backend.dto.input.SignUpDto;
 import com.portly.backend.services.impls.AuthServiceImpl;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,7 +35,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    ResponseEntity<LoginResponseDto> login(@RequestBody LoginDto loginDto,HttpServletRequest request ,HttpServletResponse response){
+    ResponseEntity<LoginResponseDto> login(@RequestBody LoginDto loginDto, HttpServletRequest request , HttpServletResponse response){
         LoginResponseDto loginResponseDto =  authService.login(loginDto);
         Cookie cookie = new Cookie("refreshToken", loginResponseDto.getRefreshToken());
         cookie.setHttpOnly(true);

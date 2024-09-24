@@ -1,6 +1,6 @@
 package com.portly.backend.services.impls;
 
-import com.portly.backend.dto.SignUpDto;
+import com.portly.backend.dto.input.SignUpDto;
 import com.portly.backend.dto.UserDto;
 import com.portly.backend.entities.User;
 import com.portly.backend.entities.enums.Role;
@@ -10,7 +10,6 @@ import com.portly.backend.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

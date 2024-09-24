@@ -27,9 +27,9 @@ public interface PortfolioService {
 
     AchievementDto editAchievementSection(AchievementDto achievementDto);
 
-    Portfolio createPortfolio(User user);
+    void createPortfolio(User user);
 
     Portfolio savePortfolio(Portfolio portfolio);
 
-
+    Portfolio editIsPublic(Boolean isPublic);
 }

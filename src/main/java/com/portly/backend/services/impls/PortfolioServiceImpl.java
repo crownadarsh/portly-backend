@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Map;
 
+import static com.portly.backend.entities.enums.Section.*;
+
 @Service
 @RequiredArgsConstructor
 public class PortfolioServiceImpl implements PortfolioService {
@@ -36,6 +38,7 @@ public class PortfolioServiceImpl implements PortfolioService {
     public PortfolioDto getPortFolio(String username) {
         User user = userService.findUserByEmail(username+"@gmail.com");
         Portfolio portfolio = getPortfolioByUser(user);
+        if(!portfolio.getIsPublic()) throw new ResourceNotFoundException("Portfolio is not found.");
         return modelMapper.map(portfolio, PortfolioDto.class);
     }
 
@@ -89,6 +92,10 @@ public class PortfolioServiceImpl implements PortfolioService {
                 .cardTextColour(workExperienceDto.getCardTextColour())
                 .build();
 
+        Map<Section, Boolean> activeSection = portfolio.getActiveSection();
+        activeSection.replace(WORK_EXPERIENCE,workExperienceDto.getIsActive());
+        portfolio.setActiveSection(activeSection);
+        savePortfolio(portfolio);
         return modelMapper.map(workExperienceSectionService.updateWorkExperienceSection(updatedWorkExperienceSection), WorkExperienceDto.class);
     }
 
@@ -106,6 +113,10 @@ public class PortfolioServiceImpl implements PortfolioService {
                 skillSectionService.updateSkillSection(skillSection)
         );
 
+        Map<Section, Boolean> activeSection = portfolio.getActiveSection();
+        activeSection.replace(SKILLS,skillDto.getIsActive());
+        portfolio.setActiveSection(activeSection);
+        savePortfolio(portfolio);
         return modelMapper.map(portfolio.getSkillSection(), SkillDto.class);
 
     }
@@ -122,6 +133,10 @@ public class PortfolioServiceImpl implements PortfolioService {
                 contactSectionService.updateContactSection(contactSection)
         );
 
+        Map<Section, Boolean> activeSection = portfolio.getActiveSection();
+        activeSection.replace(CONTACT,contactDto.getIsActive());
+        portfolio.setActiveSection(activeSection);
+        savePortfolio(portfolio);
         return modelMapper.map(portfolio.getContactSection(),ContactDto.class);
     }
 
@@ -169,6 +184,11 @@ public class PortfolioServiceImpl implements PortfolioService {
                 .projectTextColour(projectSectionDto.getProjectTextColour())
                 .build();
 
+        Map<Section, Boolean> activeSection = portfolio.getActiveSection();
+        activeSection.replace(PROJECT_SECTION,projectSectionDto.getIsActive());
+        portfolio.setActiveSection(activeSection);
+        savePortfolio(portfolio);
+
         return modelMapper.map(projectSectionService.updateProjectSection(updatedProjectSection), ProjectSectionDto.class);
     }
 
@@ -184,6 +204,9 @@ public class PortfolioServiceImpl implements PortfolioService {
         portfolio.setAppBarSection(
                 appBarSectionService.updateAppBarSection(appBarSection)
         );
+        Map<Section, Boolean> activeSection = portfolio.getActiveSection();
+        activeSection.replace(APP_BAR,appBarDto.getIsActive());
+        portfolio.setActiveSection(activeSection);
         savePortfolio(portfolio);
         return modelMapper.map(portfolio.getAppBarSection(),AppBarDto.class);
     }
@@ -200,6 +223,10 @@ public class PortfolioServiceImpl implements PortfolioService {
         portfolio.setHeaderSection(
                 headerSectionService.updateHeaderSection(headerSection)
         );
+
+        Map<Section, Boolean> activeSection = portfolio.getActiveSection();
+        activeSection.replace(HEADER,headerDto.getIsActive());
+        portfolio.setActiveSection(activeSection);
         savePortfolio(portfolio);
 
         return modelMapper.map(portfolio.getHeaderSection(), HeaderDto.class);
@@ -217,6 +244,10 @@ public class PortfolioServiceImpl implements PortfolioService {
         portfolio.setAchievementSection(
                 achievementSectionService.updateAchievementSection(achievementSection)
         );
+
+        Map<Section, Boolean> activeSection = portfolio.getActiveSection();
+        activeSection.replace(ACHIEVEMENT,achievementDto.getIsActive());
+        portfolio.setActiveSection(activeSection);
         savePortfolio(portfolio);
         return modelMapper.map(portfolio.getAchievementSection(), AchievementDto.class);
 
@@ -224,7 +255,7 @@ public class PortfolioServiceImpl implements PortfolioService {
 
     @Override
     @Transactional
-    public Portfolio createPortfolio(User user) {
+    public void createPortfolio(User user) {
 
         Portfolio portfolio = Portfolio.builder()
                 .user(user)
@@ -236,7 +267,7 @@ public class PortfolioServiceImpl implements PortfolioService {
                         Section.HEADER,true,
                         Section.PROJECT_SECTION,true,
                         Section.SKILLS,true,
-                        Section.WORK_EXPERIENCE,true
+                        WORK_EXPERIENCE,true
                 ))
                 .achievementSection(achievementSectionService.createAchievementSection())
                 .appBarSection(appBarSectionService.createAppBarSection())
@@ -246,14 +277,23 @@ public class PortfolioServiceImpl implements PortfolioService {
                 .skillSection(skillSectionService.createSkillSection())
                 .workExperienceSection(workExperienceSectionService.createWorkExperienceSection())
                 .build();
-        return portfolioRepository.save(portfolio);
+        portfolioRepository.save(portfolio);
     }
 
     @Override
     public Portfolio savePortfolio(Portfolio portfolio) {
-        return portfolioRepository.save(portfolio);
+         return portfolioRepository.save(portfolio);
     }
 
+    @Override
+    public Portfolio editIsPublic(Boolean isPublic) {
+
+        User user = userService.getCurrentUser();
+        Portfolio portfolio = getPortfolioByUser(user);
+
+        portfolio.setIsPublic(isPublic);
+        return savePortfolio(portfolio);
+    }
 
 
 }

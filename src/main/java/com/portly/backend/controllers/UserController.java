@@ -1,6 +1,8 @@
 package com.portly.backend.controllers;
 
 import com.portly.backend.dto.*;
+import com.portly.backend.dto.input.IsPublicDto;
+import com.portly.backend.entities.Portfolio;
 import com.portly.backend.services.impls.PortfolioServiceImpl;
 import com.portly.backend.services.impls.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -58,6 +60,11 @@ public class UserController {
     @PutMapping("/edit/workExperience")
     public ResponseEntity<WorkExperienceDto> editWorkExperienceSection(@RequestBody WorkExperienceDto workExperienceDto){
         return ResponseEntity.ok(portfolioService.editWorkExperienceSection(workExperienceDto));
+    }
+
+    @PutMapping("/edit/isPublic")
+    public ResponseEntity<Portfolio> editIsPublicPublic(@RequestBody IsPublicDto isPublic){
+        return ResponseEntity.ok(portfolioService.editIsPublic(isPublic.getIsPublic()));
     }
 
 

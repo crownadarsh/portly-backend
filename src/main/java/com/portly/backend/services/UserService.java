@@ -1,6 +1,6 @@
 package com.portly.backend.services;
 
-import com.portly.backend.dto.SignUpDto;
+import com.portly.backend.dto.input.SignUpDto;
 import com.portly.backend.dto.UserDto;
 import com.portly.backend.entities.User;
 import org.springframework.security.core.userdetails.UserDetailsService;

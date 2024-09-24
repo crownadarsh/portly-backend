@@ -2,6 +2,8 @@ package com.portly.backend.services.impls;
 
 import com.portly.backend.dto.*;
 import com.portly.backend.dto.input.ForgetPasswordDto;
+import com.portly.backend.dto.input.LoginDto;
+import com.portly.backend.dto.input.SignUpDto;
 import com.portly.backend.entities.User;
 import com.portly.backend.services.AuthService;
 import com.portly.backend.services.JwtService;
