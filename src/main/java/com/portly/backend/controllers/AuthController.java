@@ -12,16 +12,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationServiceException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@CrossOrigin
 public class AuthController {
 
     private final AuthServiceImpl authService;
@@ -65,9 +63,12 @@ public class AuthController {
 
 
     @PostMapping("/forgetPassword")
-    public ResponseEntity<UserDto> forgetPassword(@RequestBody ForgetPasswordDto forgetPasswordDto){
+    public ResponseEntity<String> forgetPassword(@RequestBody ForgetPasswordDto forgetPasswordDto){
         return ResponseEntity.ok(authService.forgetPassword(forgetPasswordDto));
     }
+
+
+
 
 
 

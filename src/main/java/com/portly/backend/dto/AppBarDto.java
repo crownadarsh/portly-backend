@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class AppBarDto {
 
-    private Boolean isActive;
     private String backgroundColour;
     private String textColour;
 

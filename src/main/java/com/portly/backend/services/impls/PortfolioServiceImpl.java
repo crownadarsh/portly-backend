@@ -1,6 +1,7 @@
 package com.portly.backend.services.impls;
 
 import com.portly.backend.dto.*;
+import com.portly.backend.dto.input.*;
 import com.portly.backend.dto.output.PortfolioDto;
 import com.portly.backend.entities.*;
 import com.portly.backend.entities.enums.Section;
@@ -51,7 +52,7 @@ public class PortfolioServiceImpl implements PortfolioService {
 
     @Override
     @Transactional
-    public WorkExperienceDto editWorkExperienceSection(WorkExperienceDto workExperienceDto) {
+    public WorkExperienceDto editWorkExperienceSection(WorkExperienceDtoInput workExperienceDto) {
         User user = userService.getCurrentUser();
         Portfolio portfolio = getPortfolioByUser(user);
         WorkExperienceSection workExperienceSection = portfolio.getWorkExperienceSection();
@@ -101,7 +102,7 @@ public class PortfolioServiceImpl implements PortfolioService {
 
 
     @Override
-    public SkillDto editSkillSection(SkillDto skillDto) {
+    public SkillDto editSkillSection(SkillDtoInput skillDto) {
 
         User user = userService.getCurrentUser();
         Portfolio portfolio = getPortfolioByUser(user);
@@ -122,7 +123,7 @@ public class PortfolioServiceImpl implements PortfolioService {
     }
 
     @Override
-    public ContactDto editContactSection(ContactDto contactDto) {
+    public ContactDto editContactSection(ContactDtoInput contactDto) {
 
         User user = userService.getCurrentUser();
         Portfolio portfolio = getPortfolioByUser(user);
@@ -141,7 +142,7 @@ public class PortfolioServiceImpl implements PortfolioService {
     }
 
     @Override
-    public ProjectSectionDto editProjectSection(ProjectSectionDto projectSectionDto) {
+    public ProjectSectionDto editProjectSection(ProjectSectionDtoInput projectSectionDto) {
         User user = userService.getCurrentUser();
         Portfolio portfolio = getPortfolioByUser(user);
         ProjectSection projectSection = portfolio.getProjectSection();
@@ -193,7 +194,7 @@ public class PortfolioServiceImpl implements PortfolioService {
     }
 
     @Override
-    public AppBarDto editAppBarSection(AppBarDto appBarDto) {
+    public AppBarDto editAppBarSection(AppBarDtoInput appBarDto) {
 
         User user = userService.getCurrentUser();
         Portfolio portfolio = getPortfolioByUser(user);
@@ -213,7 +214,7 @@ public class PortfolioServiceImpl implements PortfolioService {
 
     @Override
     @Transactional
-    public HeaderDto editHeaderSection(HeaderDto headerDto) {
+    public HeaderDto editHeaderSection(HeaderDtoInput headerDto) {
 
         User user = userService.getCurrentUser();
         Portfolio portfolio = getPortfolioByUser(user);
@@ -234,7 +235,7 @@ public class PortfolioServiceImpl implements PortfolioService {
 
     @Override
     @Transactional
-    public AchievementDto editAchievementSection(AchievementDto achievementDto) {
+    public AchievementDto editAchievementSection(AchievementDtoInput achievementDto) {
 
         User user = userService.getCurrentUser();
         Portfolio portfolio = getPortfolioByUser(user);

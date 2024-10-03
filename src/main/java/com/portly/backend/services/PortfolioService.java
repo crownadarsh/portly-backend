@@ -1,6 +1,9 @@
 package com.portly.backend.services;
 
 import com.portly.backend.dto.*;
+import com.portly.backend.dto.ProjectSectionDto;
+import com.portly.backend.dto.WorkExperienceDto;
+import com.portly.backend.dto.input.*;
 import com.portly.backend.dto.output.PortfolioDto;
 import com.portly.backend.entities.Portfolio;
 import com.portly.backend.entities.User;
@@ -13,19 +16,19 @@ public interface PortfolioService {
 
     Portfolio getPortfolioByUser(User user);
 
-    WorkExperienceDto editWorkExperienceSection(WorkExperienceDto workExperienceDto);
+    WorkExperienceDto editWorkExperienceSection(WorkExperienceDtoInput workExperienceDto);
 
-    SkillDto editSkillSection(SkillDto skillDto);
+    SkillDto editSkillSection(SkillDtoInput skillDto);
 
-    ContactDto editContactSection(ContactDto contactDto);
+    ContactDto editContactSection(ContactDtoInput contactDto);
 
-    ProjectSectionDto editProjectSection(ProjectSectionDto projectSectionDto);
+    ProjectSectionDto editProjectSection(ProjectSectionDtoInput projectSectionDto);
 
-    AppBarDto editAppBarSection(AppBarDto appBarDto);
+    AppBarDto editAppBarSection(AppBarDtoInput appBarDto);
 
-    HeaderDto editHeaderSection(HeaderDto headerDto);
+    HeaderDto editHeaderSection(HeaderDtoInput headerDto);
 
-    AchievementDto editAchievementSection(AchievementDto achievementDto);
+    AchievementDto editAchievementSection(AchievementDtoInput achievementDto);
 
     void createPortfolio(User user);
 

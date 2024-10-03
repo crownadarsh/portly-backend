@@ -11,7 +11,6 @@ import java.util.Map;
 @Data
 public class ContactDto {
 
-    private Boolean isActive;
     private String email;
     private String mobile;
     private Map<String,String> socialLinks;

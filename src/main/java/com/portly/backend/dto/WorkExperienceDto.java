@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 public class WorkExperienceDto {
 
-    private Boolean isActive;
     private String backgroundColour;
     private String textColour;
     private String cardBackgroundColour;

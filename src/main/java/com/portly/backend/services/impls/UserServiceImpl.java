@@ -54,6 +54,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElse(null);
+    }
+
+    @Override
     public UserDto getMyProfile() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return modelMapper.map(user,UserDto.class);
@@ -67,6 +72,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getCurrentUser() {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userRepository.save(user);
     }
 
     @Override

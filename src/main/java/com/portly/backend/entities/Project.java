@@ -17,13 +17,14 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Integer> image;
+    @Column(length = 1400000)
+    private String image;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> tags;
 
     private String title;
+
     @Column(length = 1000)
     private String description;
     private String projectUrl;

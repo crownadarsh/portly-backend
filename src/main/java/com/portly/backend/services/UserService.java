@@ -15,9 +15,13 @@ public interface UserService extends UserDetailsService {
 
     User findUserByEmail(String email);
 
+    User getUserByEmail(String email);
+
     UserDto getMyProfile();
 
     UserDto editProfile();
 
     User getCurrentUser();
+
+    void updateUser(User user);
 }

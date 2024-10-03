@@ -14,8 +14,7 @@ public interface AuthService {
 
     LoginResponseDto login(LoginDto loginDto);
 
-    UserDto forgetPassword(ForgetPasswordDto forgetPasswordDto);
+    String forgetPassword(ForgetPasswordDto forgetPasswordDto);
 
     LoginResponseDto refresh(String refreshToken);
-
 }

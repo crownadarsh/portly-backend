@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 public class SkillDto {
 
-    private Boolean isActive;
     private List<String> advance;
     private List<String> intermediate;
     private List<String> beginner;

@@ -9,15 +9,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class SkillDto {
-
+public class HeaderDtoInput {
     private Boolean isActive;
-    private List<String> advance;
-    private List<String> intermediate;
-    private List<String> beginner;
+    private String heroDescription;
+    private String image;
+    private List<Integer> cv;
     private String backgroundColour;
     private String textColour;
-    private String tagBackgroundColour;
-    private String tagTextColour;
-
 }

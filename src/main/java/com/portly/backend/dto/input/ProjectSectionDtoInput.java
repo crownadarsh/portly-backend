@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ProjectSectionDto {
+public class ProjectSectionDtoInput {
 
     private Boolean isActive;
     private String backgroundColour;

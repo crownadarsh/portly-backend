@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class ForgetPasswordDto {
+public class VerifyOtpDto {
     private String email;
-    private String password;
+    private String otp;
+
 }

@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ForgetPasswordDto {
-    private String email;
+public class EditProfileDto {
+
+    private String name;
     private String password;
+
 }

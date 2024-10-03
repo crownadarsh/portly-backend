@@ -18,11 +18,11 @@ public class HeaderSection {
     private Long id;
     private String heroDescription;
 
-    @Column(length = 10000000)
+    @Column(length = 14000000)
     private String image;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Integer> cv;
+    @Column(length = 14000000)
+    private String cv;
 
     private String backgroundColour;
     private String textColour;
